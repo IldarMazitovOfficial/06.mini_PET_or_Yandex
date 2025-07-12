@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Этап 0</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: sans-serif;
+      font-size: 1.5em;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+    }
+
+    img {
+      width: 150px;
+    }
+
+    input[type="text"] {
+      width: 450px;
+      padding: 15px;
+      font-size: 1em;
+      text-align: center;
+      border: 2px solid black;
+      border-radius: 8px;
+    }
+
+    input[type="text"]::placeholder {
+      color: rgba(0, 0, 0, 0.3);
+      transition: opacity 0.2s ease;
+    }
+
+    input[type="text"]:focus::placeholder {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <form id="yandexForm">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Yandex_icon.svg/2048px-Yandex_icon.svg.png" alt="Яндекс">
+    <label>
+      <h3>Чтобы перейти на сайт Яндекс, напишите в поле слово "яндекс" и нажмите "Enter".</h3>
+    </label>
+    <input id="yandexInput" type="text" placeholder="да-да ты всё правильно понял" autocomplete="off">
+  </form>
+
+  <script>
+    const form = document.getElementById('yandexForm');
+    const input = document.getElementById('yandexInput');
+
+    const messages = [
+      'Неверно.',
+      'Попробуй ещё раз.',
+      'Да не.',
+      'Нет.',
+      'No.',
+      'Nein.',
+      'Не надоело?',
+      'Похоже нет.',
+      'Почем сейчас доллар?',
+      'Я хотел бы узнать что там с Бритни?..',
+      'У Вас были сексуальные контакты за последнюю неделю?',
+      'Да.',
+      'Нет.',
+      'Только не врать мне, ладно?',
+      'Ничего, мне можно сказать, я - "доктор".',
+      'Ты - девственник.',
+      'Да.',
+      'Охренеть! Ну ты и лузер!'
+    ];
+
+    let messageIndex = 0;
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault(); // отменяем стандартную отправку формы
+
+      const value = input.value.trim().toLowerCase();
+      if (value === 'яндекс') {
+        window.location.href = 'https://ya.ru';
+      } else {
+        alert(messages[messageIndex]);
+        messageIndex = (messageIndex + 1) % messages.length; // цикл по сообщениям
+      }
+    });
+  </script>
+</body>
+</html>
