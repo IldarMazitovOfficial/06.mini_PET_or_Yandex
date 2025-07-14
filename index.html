@@ -4,9 +4,14 @@
   <meta charset="UTF-8">
   <title>Этап 0</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
+      padding: 2vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -21,6 +26,9 @@
       flex-direction: column;
       align-items: center;
       gap: 1em;
+      text-align: center;
+      width: 100%;
+      max-width: 600px;
     }
 
     img {
@@ -28,7 +36,8 @@
     }
 
     input[type="text"] {
-      width: 450px;
+      width: 100%;
+      max-width: 450px;
       padding: 15px;
       font-size: 1em;
       text-align: center;
@@ -48,7 +57,7 @@
     /* 💬 Всплывающее окошко */
     #bubble {
       position: fixed;
-      bottom: 25%;
+      bottom: 30%;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(30, 30, 30, 0.9);
@@ -62,10 +71,34 @@
       pointer-events: none;
       transition: opacity 0.3s ease;
       z-index: 9999;
+      text-align: center;
     }
 
     #bubble.show {
       opacity: 1;
+    }
+
+    /* 📱 Адаптация под мобилку */
+    @media (max-width: 480px) {
+      body {
+        font-size: 1.2em;
+        padding: 4vh 2vw;
+      }
+
+      img {
+        width: 100px;
+      }
+
+      input[type="text"] {
+        padding: 12px;
+        font-size: 1em;
+      }
+
+      #bubble {
+        font-size: 0.95em;
+        bottom: 35%;
+        padding: 0.7em 1.2em;
+      }
     }
   </style>
 </head>
